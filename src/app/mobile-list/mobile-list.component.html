@@ -1,0 +1,80 @@
+<div class="container-fluid pl-0">
+
+  <div class="container-fluid pl-0">
+    <span ><small>Home > Mobile & Accessories > Mobile</small></span> <br>
+    <span class="h6">Showing 1-24 of 245 Results for "XYZ Mobiles"</span> <br>
+          <label class="h6" >SortBy -></label>
+          <div class="btn-group btn-group-sm ml-2">
+              <button (click)="SortPopularity()" type="button" class="btn btn-primary ml-2 border">Popularity</button>
+              <button (click)="SortPriceLowtoHigh()" type="button" class="btn btn-primary ml-2 border">Price - Low to High</button>
+              <button (click)="SortPriceHighToLow()" type="button" class="btn btn-primary ml-2 border">Price - High to Low</button>
+            </div>   
+          <hr>
+  </div>
+
+
+  <!-- Main Mobile list  -->
+  <div class="conatainer" *ngFor="let mobile of mobileList">
+    <div style="cursor: pointer;" class="row pb-4">
+        <div class="col-md-3 ml-2 ">   
+            <div class="pl-4  pt-2 ">
+                <img width=153 height=200  src="{{mobile.imgPath}}"
+             alt="mobileImage">
+            </div>
+
+            <div style="top:0;right:8%; position: absolute;">
+               <a  href="#"> <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.3783 5.88622C9.66902 4.10486 6.79049 4.0794 4.92308 5.90387C4.91717 5.90965 4.91116 5.91534 4.90506 5.92092C3.09331 7.58038 3.06654 10.3577 4.92308 12.1716L4.92796 12.1763L11.9374 19.1469L19.0769 12.1716C19.0828 12.1658 19.0888 12.1601 19.0949 12.1545C20.9067 10.495 20.9335 7.71772 19.0769 5.90387C17.2195 4.08919 14.3268 4.08919 12.4694 5.90387C12.3227 6.04722 12.125 6.12596 11.9202 6.12264C11.7154 6.11933 11.5204 6.03424 11.3783 5.88622ZM11.9465 4.31813C9.59468 2.40387 6.12292 2.58601 3.85838 4.79012C1.36802 7.08049 1.39686 10.8778 3.84702 13.2742C3.84785 13.275 3.84869 13.2759 3.84952 13.2767L11.391 20.7763C11.689 21.0727 12.1688 21.0748 12.4694 20.7811L20.1419 13.2851C22.6328 10.9939 22.603 7.19491 20.1505 4.79876C17.8724 2.57305 14.397 2.41284 11.9465 4.31813Z" fill="#030D45"/>
+                </svg>
+               </a>
+            </div>
+        </div> <!--end of image div-->
+   
+         <div class="col-md-7 ml-0 ">
+             <h5 id="MobileName" > {{mobile.general.ModelFullName}} ( {{mobile.general.Color}}, {{mobile.MemoryStorageFeatures.InternalStorage}} GB )</h5>
+             <div>
+                <span class="badge badge-rounded badge-success">{{mobile.customerRating}}
+                    <svg width="10px" height="10px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <polygon fill="#FFFFFF" fill-rule="evenodd" points="12 16.667 5 22 8 14 2 9.5 9.5 9.5 12 2 14.5 9.5 22 9.5 16 14 19 22"/>
+                      </svg>
+                 </span>
+                 <span class="text-muted ml-2"><small>854 Ratings & 73 Reviews</small> </span>
+             </div> 
+             
+             <div style="font-size: 14px;font-family: Arial;" class="mt-2">
+                 <ul >
+                     <li> {{mobile.MemoryStorageFeatures.RAM}}GB RAM | {{mobile.MemoryStorageFeatures.InternalStorage}}GB ROM | Expendable Upto {{mobile.MemoryStorageFeatures.InternalStorageExpendable}}TB</li>
+                     <li>{{mobile.DisplayFeatures.DisplaySize*(2.54) | number}} cm ({{mobile.DisplayFeatures.DisplaySize}} inch) {{mobile.DisplayFeatures.ResolutionType}} Display</li>
+                     <li>{{mobile.CameraFeatures.BackCamera}} MP | {{mobile.CameraFeatures.FrontCamera}} MP Front Camera</li>
+                     <li>{{mobile.BatteryPowerFeatures.BatteryCapacity}} mAh Battery</li>
+                     <li>{{mobile.OsProcessorFeatures.ProcessorFullName}} Processor</li>
+                     <li>{{mobile.Warranty.WarrantyDetail}}</li>
+                 </ul>
+                
+             </div>
+   
+         </div>
+
+         <div class="col-md pt-2 pl-0 ml-0">
+          <div><h5><strong>₹{{mobile.price}} /-</strong></h5></div> 
+          <div style="float: right;"><img height="21" src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png"></div>
+         <p> <del class="text-muted">₹{{mobile.price*(1-mobile.discountPercent/100) | number}}</del> <span *ngIf="mobile.discountPercent>0" class="text-success ml-1">{{mobile.discountPercent}}<small>% Off</small></span></p>
+         <span>Delivered By <strong>2PM Tomorrow</strong></span> 
+         
+         <!-- <div class="p-3">
+            <button style="background-color: #ff9f00;" type="button" class="btn btn-lg btn-success">Add To Cart</button>
+            <button type="button" class="btn btn-outline-success">Add To Cart</button>
+        </div> -->
+         
+         </div>
+
+         
+
+        </div>
+        <hr>
+
+  </div>
+
+
+
+  </div>

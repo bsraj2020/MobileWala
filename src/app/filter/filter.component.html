@@ -1,0 +1,759 @@
+<app-navbar></app-navbar>
+<br>
+
+
+
+
+
+    <div class="container-fluid p-3 bg-light">
+  
+        <div class="row">
+            <div class="col-md-3 bg-white ml-1 border">
+             <div class="p-3 h5">
+                 <Span>Filters</Span>
+                  <button (click)="FilterNow()" type="button" class="btn btn-success m-2">
+                    FilterNow
+                  </button>
+             </div>
+             
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                   <button type="button"  class="h6 btn bg-light btn-block my-0 py-0" data-toggle="collapse" data-target="#Catagory" >
+                       Catagory
+                      <!-- <span >
+                         <svg width="12px" height="12px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 492.426 492.426" style="enable-background:new 0 0 492.426 492.426;" xml:space="preserve">
+                    <polygon points="261.232,434.981 261.232,57.445 305.607,101.82 326.82,80.606 246.213,0 165.607,80.606 186.82,101.82 
+                        231.232,57.408 231.232,435.019 186.82,390.606 165.607,411.82 246.213,492.426 326.82,411.82 305.607,390.606 "/>
+                    </svg>    
+                     </span>-->
+                  </button> 
+                 </div>
+            <div id="Catagory" class="collapse show">
+             <ul class="my-0 " *ngFor="let CatagoryItem of CatagoryList" >
+                 <li   style="cursor: pointer;">{{CatagoryItem}}</li>
+             </ul>
+            </div>
+             </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                   <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" data-target="#Price" >
+                       Price 
+                  </button> 
+                 </div>
+             <div id="Price"  class="slidecontainer collapse show mt-3">  
+                 <select id="minPrice"  (change)="OnChangeMinPrice()" [(ngModel)]="curMinPrice" class="form-control">
+                     <option  value="Min"  >Min</option>
+                     <option *ngFor="let value of PriceList" value={{value}} >₹{{value}}</option>
+                 </select>
+                 <span class="mx-4">to</span> 
+                 <select id="maxPrice" class="form-control" >
+                      <option  value="Max"  >Max</option>
+                     <option *ngFor="let Maxvalue of MaxPriceList" value={{Maxvalue}}  >₹{{Maxvalue}}</option>
+                 </select>
+               </div>
+             </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                   <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" data-target="#BrandList" >
+                       Brand
+                  </button> 
+                 </div>
+             <div id="BrandList" class="collapse show">
+                 <ul style="list-style-type:none">
+                     <li *ngFor="let brandName of BrandList"> 
+                         <div class="form-check">
+                         <input id="inputBrandList" class="form-check-input" type="checkbox" value="" >
+                         <label  id="labelBrandList" class="form-check-label" for="flexCheckDefault">
+                           {{brandName}}
+                         </label>
+                         </div> 
+                     </li> 
+                 </ul>
+             </div> 
+             </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                   <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                   data-target="#CRating" >
+                      Customer Ratings
+                  </button> 
+                 </div>
+             <div id="CRating" class="collapse show">
+                 <ul style="list-style-type:none">
+                     <li *ngFor="let cr of CustomerRatingList"> 
+                         <div class="form-check">
+                         <input id="inputCustomerRatingList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelCustomerRatingList" class="form-check-label" for="flexCheckDefault">
+                             {{cr}}★ & above
+                         </label>
+                         </div> 
+                     </li>     
+                 </ul>
+             </div>
+             </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                   <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                   data-target="#Asssured" >
+                      PhoneWala Assured
+                  </button> 
+                 </div>
+             <div id="Asssured" class="collapse">
+                 <ul style="list-style-type:none">
+                     <li> 
+                         <div class="form-check">
+                         <input id="inputAsssured" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelAsssured" class="form-check-label" for="flexCheckDefault">
+                          PhoneWala Assured
+                         </label>
+                         </div> 
+                     </li>   
+                 </ul>
+             </div>
+             </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                   <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                   data-target="#GSTInvoice" >
+                   GST Invoice Available
+                  </button> 
+                 </div>
+             <div id="GSTInvoice" class="collapse">
+             <ul style="list-style-type:none">
+                 <li> 
+                     <div class="form-check">
+                     <input id="inputGSTInvoice" class="form-check-input" type="checkbox" value="" >
+                     <label id="labelGSTInvoice" class="form-check-label" for="flexCheckDefault">
+                         GST Invoice Available
+                     </label>
+                     </div> 
+                 </li>   
+             </ul>
+              </div>
+             </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                   <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                   data-target="#RAm" >
+                      RAM
+                  </button> 
+                 </div>
+             <div id="RAm" class="collapse show">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of RAMList;let idx=index"> 
+                    <div class="form-check">
+                        <input id="inputRAMList" class="form-check-input" type="checkbox" value="" >
+                        <label id="labelRAMList" class="form-check-label" for="flexCheckDefault" >
+                            {{RAMList[idx]}} GB
+                        </label>
+                        </div> 
+                       
+                 </li>   
+             </ul>
+           </div>
+             </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                   <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                   data-target="#InternalStorage" >
+                   Internal Storage
+                  </button> 
+                 </div>
+             <div id="InternalStorage" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let item of InternalStorageList;let idx=index;"> 
+     
+                     <div *ngIf="idx==0" class="form-check">
+                         <input id="inputInternalStorageList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelInternalStorageList" class="form-check-label" for="flexCheckDefault">
+                           {{InternalStorageList[idx]}} GB & below
+                          
+                         </label>
+                         </div> 
+     
+                     <div *ngIf="idx<InternalStorageList.length-1" class="form-check">
+                        <input id="inputInternalStorageList" class="form-check-input" type="checkbox" value="" >
+                        <label id="labelInternalStorageList" class="form-check-label" for="flexCheckDefault">
+                       {{InternalStorageList[idx]}} GB - {{InternalStorageList[idx+1]}} GB
+                     </label>
+                     </div> 
+     
+                     <div *ngIf="idx==InternalStorageList.length-1" class="form-check">
+                        <input id="inputInternalStorageList" class="form-check-input" type="checkbox" value="" >
+                        <label id="labelInternalStorageList" class="form-check-label" for="flexCheckDefault">
+                           {{InternalStorageList[idx]}} & above
+                         </label>
+                         </div> 
+                     
+                 </li>   
+             </ul>
+         </div> 
+             </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                   <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                   data-target="#Battary" >
+                   Battary Capacity
+                  </button> 
+                 </div>
+             <div id="Battary" class="collapse">
+             <ul style="list-style-type:none"> 
+                 <li *ngFor="let item of BattaryCapacityList;let idx=index"> 
+                    
+                     <div *ngIf="idx==0" class="form-check">
+                         <input id="inputBattaryCapacityList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelBattaryCapacityList" class="form-check-label" for="flexCheckDefault">
+                           {{BattaryCapacityList[idx]}} mAh & below
+                          
+                         </label>
+                         </div> 
+     
+                     <div *ngIf="idx<BattaryCapacityList.length-1" class="form-check">
+                        <input id="inputBattaryCapacityList" class="form-check-input" type="checkbox" value="" >
+                        <label id="labelBattaryCapacityList" class="form-check-label" for="flexCheckDefault">
+                       {{BattaryCapacityList[idx]}}  - {{BattaryCapacityList[idx+1]}} mAh
+                     </label>
+                     </div> 
+     
+                     <div *ngIf="idx==BattaryCapacityList.length-1" class="form-check">
+                        <input id="inputBattaryCapacityList" class="form-check-input" type="checkbox" value="" >
+                        <label id="labelBattaryCapacityList" class="form-check-label" for="flexCheckDefault">
+                           {{BattaryCapacityList[idx]}} mAh & above
+                         </label>
+                         </div> 
+     
+                 </li>   
+             </ul>
+         </div>  </div>
+     
+     
+
+             <hr>
+             <div> 
+              <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#ScreenSizeList" >
+                 Screen Size
+                </button> 
+               </div>
+           <div id="ScreenSizeList" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of ScreenSizeList;let idx=index"> 
+                     <div *ngIf="idx==0" class="form-check">
+                         <input id="inputScreenSizeList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelScreenSizeList" class="form-check-label" for="flexCheckDefault">
+                           {{ScreenSizeList[idx]}} inch & below
+                          
+                         </label>
+                         </div> 
+     
+                     <div *ngIf="idx<ScreenSizeList.length-1" class="form-check">
+                        <input id="inputScreenSizeList" class="form-check-input" type="checkbox" value="" >
+                        <label id="labelScreenSizeList" class="form-check-label" for="flexCheckDefault">
+                       {{ScreenSizeList[idx]}}  - {{ScreenSizeList[idx+1]}} inch
+                     </label>
+                     </div> 
+     
+                     <div *ngIf="idx==ScreenSizeList.length-1" class="form-check">
+                        <input id="inputScreenSizeList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelScreenSizeList" class="form-check-label" for="flexCheckDefault">
+                           {{ScreenSizeList[idx]}} inch & above
+                         </label>
+                         </div>  
+                 </li>   
+             </ul>
+         </div>
+             </div>
+     
+     
+     
+             <hr>
+              <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#BackCameraList" >
+                Primary Camera
+                </button> 
+               </div>
+             <div id="BackCameraList" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of BackCameraList;let idx=index"> 
+                     <div *ngIf="idx==0" class="form-check">
+                         <input id="inputBackCameraList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelBackCameraList" class="form-check-label" for="flexCheckDefault">
+                           {{BackCameraList[idx]}} MP & below
+                          
+                         </label>
+                         </div> 
+     
+                     <div *ngIf="idx<BackCameraList.length-1" class="form-check">
+                        <input id="inputBackCameraList" class="form-check-input" type="checkbox" value="" >
+                        <label id="labelBackCameraList" class="form-check-label" for="flexCheckDefault">
+                       {{BackCameraList[idx]}}  - {{BackCameraList[idx+1]}} MP
+                     </label>
+                     </div> 
+     
+                     <div *ngIf="idx==BackCameraList.length-1" class="form-check">
+                        <input id="inputBackCameraList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelBackCameraList" class="form-check-label" for="flexCheckDefault">
+                           {{BackCameraList[idx]}} MP & above
+                         </label>
+                         </div>  
+                 </li>   
+             </ul>
+             </div>
+             </div>
+         
+     
+     
+             <hr>
+              <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#FrontCameraList" >
+                Secondary Camera
+                </button> 
+               </div>
+             <div id="FrontCameraList" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of FrontCameraList;let idx=index"> 
+                     <div *ngIf="idx==0" class="form-check">
+                         <input id="FrontCameraListinput" class="form-check-input" type="checkbox" value="" >
+                         <label id="FrontCameraListlabel" class="form-check-label" for="flexCheckDefault">
+                           {{FrontCameraList[idx]}} MP & below
+                          
+                         </label>
+                         </div> 
+     
+                     <div *ngIf="idx<FrontCameraList.length-1" class="form-check">
+                        <input id="FrontCameraListinput" class="form-check-input" type="checkbox" value="" >
+                        <label id="FrontCameraListlabel" class="form-check-label" for="flexCheckDefault">
+                       {{FrontCameraList[idx]}}  - {{FrontCameraList[idx+1]}} MP
+                     </label>
+                     </div> 
+     
+                     <div *ngIf="idx==FrontCameraList.length-1" class="form-check">
+                        <input id="FrontCameraListinput" class="form-check-input" type="checkbox" value="" >
+                        <label id="FrontCameraListlabel" class="form-check-label" for="flexCheckDefault">
+                           {{FrontCameraList[idx]}} MP & above
+                         </label>
+                         </div>  
+                 </li>   
+             </ul>
+         </div>
+             </div>
+          
+     
+     
+             <hr>
+              <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#ProcessorBrandList" >
+                 Processor Brand
+                </button> 
+               </div>
+             <div id="ProcessorBrandList" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of ProcessorBrandList;let idx=index"> 
+                     <div  class="form-check">
+                         <input id="inputProcessorBrandList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelProcessorBrandList" class="form-check-label" for="flexCheckDefault">
+                           {{i}}
+                         </label>
+                         </div>     
+                 </li>   
+             </ul>
+            </div>
+             </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#Speciality" >
+                 Speciality
+                </button> 
+               </div>
+             <div id="Speciality" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of SpecialityList;let idx=index"> 
+                     <div class="form-check">
+                         <input id="inputSpecialityList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelSpecialityList" class="form-check-label" for="flexCheckDefault">
+                           {{i}} 
+                         </label>
+                         </div> 
+                 </li>   
+             </ul>
+         </div>
+         </div>
+             
+     
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#ResolutionTypeList" >
+                 Resolution Type
+                </button> 
+               </div>
+             <div id="ResolutionTypeList" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of ResolutionTypeList;"> 
+                     <div class="form-check">
+                     <input id="inputResolutionTypeList" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                     <label id="labelResolutionTypeList" class="form-check-label" for="flexCheckDefault">
+                       {{i}}
+                     </label>
+                     </div> 
+                 </li>   
+             </ul>
+         </div>
+             </div>
+     
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#OperatingSystem" >
+                 Operating System
+                </button> 
+               </div>
+             <div id="OperatingSystem" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of OperatingSystemList;"> 
+                     <div class="form-check">
+                     <input id="inputOperatingSystemList" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                     <label id="labelOperatingSystemList" class="form-check-label" for="flexCheckDefault">
+                       {{i}}
+                     </label>
+                     </div> 
+                 </li>   
+             </ul>
+         </div>
+             </div>
+     
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#SpecialityList" >
+                Network Type 
+     
+                </button> 
+               </div>
+             <div id="SpecialityList" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of NetworkTypeList"> 
+                     <div class="form-check">
+                        <input id="inputNetworkTypeList" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label id="labelNetworkTypeList" class="form-check-label" for="flexCheckDefault">
+                       {{i}}G
+                     </label>
+                     </div> 
+                 </li>   
+             </ul>
+             </div>
+         </div>
+     
+             
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#SimTypeList" >
+                 SIM Type
+                </button> 
+               </div>
+             <div id="SimTypeList" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of SimTypeList"> 
+                     <div class="form-check">
+                     <input id="inputSimTypeList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelSimTypeList" class="form-check-label" for="flexCheckDefault">
+                       {{i}}
+                     </label>
+                     </div> 
+                 </li>   
+             </ul>
+             </div>
+         </div>
+     
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#BudgetList" >
+                 Budget
+                </button> 
+               </div>
+             <div id="BudgetList" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of BudgetList;let idx=index"> 
+                     <div *ngIf="idx==0" class="form-check">
+                         <input id="inputBudgetList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelBudgetList" class="form-check-label" for="flexCheckDefault">
+                           {{BudgetList[idx]}} mAh & below
+                          
+                         </label>
+                         </div> 
+     
+                     <div *ngIf="idx<BudgetList.length-1" class="form-check">
+                     <input id="inputBudgetList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelBudgetList" class="form-check-label" for="flexCheckDefault">
+                       {{BudgetList[idx]}}  - {{BudgetList[idx+1]}} mAh
+                     </label>
+                     </div> 
+     
+                     <div *ngIf="idx==BudgetList.length-1" class="form-check">
+                         <input id="inputBudgetList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelBudgetList" class="form-check-label" for="flexCheckDefault">
+                           {{BudgetList[idx]}} mAh & above
+                         </label>
+                         </div>  
+                 </li>   
+             </ul>
+         </div>
+             </div>
+     
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#FeaturesList" >
+                 Features
+                </button> 
+               </div>
+             <div id="FeaturesList" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of FeaturesList"> 
+                     <div class="form-check">
+                     <input id="inputFeaturesList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelFeaturesList" class="form-check-label" for="flexCheckDefault">
+                       {{i}}
+                     </label>
+                     </div> 
+                 </li>   
+             </ul>
+             </div>
+         </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#MobileType" >
+                 Mobile Type
+                </button> 
+               </div>
+             <div id="MobileType" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of MobileTypeList"> 
+                     <div class="form-check">
+                     <input id="inputMobileTypeList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelMobileTypeList" class="form-check-label" for="flexCheckDefault">
+                       {{i}}
+                     </label>
+                     </div> 
+                 </li>   
+             </ul>
+             </div> </div>
+     
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#Cores" >
+                 Number Of Cores
+                </button> 
+               </div>
+             <div id="Cores" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of NumberOfCoresList"> 
+                     <div class="form-check">
+                     <input id="inputNumberOfCoresList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelNumberOfCoresList" class="form-check-label" for="flexCheckDefault">
+                       {{i}}
+                     </label>
+                     </div> 
+                 </li>   
+             </ul>
+             </div> </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#OutOfStock" >
+                 Availability
+                </button> 
+               </div>
+             <div id="OutOfStock" class="collapse">
+             <ul style="list-style-type:none">
+                 <li> 
+                     <div class="form-check">
+                     <input id="inputAvailability" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelAvailability" class="form-check-label" for="flexCheckDefault">
+                       Exclude Out Of Stock
+                     </label>
+                     </div> 
+                 </li>   
+             </ul>
+             </div> </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#Discount" >
+                 Discount
+                </button> 
+               </div>
+             <div id="Discount" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of DiscountList;let idx=index"> 
+                     <div *ngIf="idx==0" class="form-check">
+                         <input id="inputDiscountList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelDiscountList" class="form-check-label" for="flexCheckDefault">
+                           {{DiscountList[idx]}} % & below
+                          
+                         </label>
+                         </div> 
+     
+                     <div *ngIf="idx<DiscountList.length-1" class="form-check">
+                     <input id="inputDiscountList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelDiscountList" class="form-check-label" for="flexCheckDefault">
+                       {{DiscountList[idx]}}  - {{DiscountList[idx+1]}} %
+                     </label>
+                     </div> 
+     
+                     <div *ngIf="idx==DiscountList.length-1" class="form-check">
+                         <input id="inputDiscountList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelDiscountList" class="form-check-label" for="flexCheckDefault">
+                           {{DiscountList[idx]}} % & above
+                         </label>
+                         </div>  
+                 </li>   
+             </ul>
+             </div> </div>
+     
+     
+             <hr>
+             <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#OperatingSystemVersion" >
+                 Operating System Version
+                </button> 
+               </div>
+             <div id="OperatingSystemVersion" class="collapse">
+             <ul style="list-style-type:none">
+                     <li *ngFor="let i of OperatingSystemVersionList"> 
+                         <div class="form-check">
+                         <input id="inputOperatingSystemVersionList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelOperatingSystemVersionList" class="form-check-label" for="flexCheckDefault">
+                           {{i}}
+                         </label>
+                         </div> 
+                     </li>   
+                 </ul>
+             </div>
+             </div>
+     
+     
+             <hr>
+              <div class="my-0 py-0 ">
+                 <div> 
+                 <button type="button"  class="h6 btn bg-light btn-block my-0 py-0 " data-toggle="collapse" 
+                 data-target="#ClockSpeedList">
+                 Clock Speed
+                </button> 
+               </div>
+             <div id="ClockSpeedList" class="collapse">
+             <ul style="list-style-type:none">
+                 <li *ngFor="let i of ClockSpeedList;let idx=index"> 
+                     <div *ngIf="idx==0" class="form-check">
+                         <input id="inputClockSpeedList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelClockSpeedList" class="form-check-label" for="flexCheckDefault">
+                           {{ClockSpeedList[idx]}} Hz & below
+                          
+                         </label>
+                         </div> 
+     
+                     <div *ngIf="idx<ClockSpeedList.length-1" class="form-check">
+                     <input id="inputClockSpeedList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelClockSpeedList" class="form-check-label" for="flexCheckDefault">
+                       {{ClockSpeedList[idx]}}  - {{ClockSpeedList[idx+1]}} Hz
+                     </label>
+                     </div> 
+     
+                     <div *ngIf="idx==ClockSpeedList.length-1" class="form-check">
+                         <input id="inputClockSpeedList" class="form-check-input" type="checkbox" value="" >
+                         <label id="labelClockSpeedList" class="form-check-label" for="flexCheckDefault">
+                           {{ClockSpeedList[idx]}} Hz & above
+                         </label>
+                         </div>  
+                 </li>   
+             </ul>
+             </div> </div>
+     
+            </div>   <!-- End Of Filter Col  -->
+     
+         </div>
+     
+         <div class="col-md bg-white mx-2 border">
+           <!-- Here is Mobiles List -->
+           <app-mobile-list></app-mobile-list>  
+         </div>
+       
+     </div>
+     </div>
+     
+
+
+
+
