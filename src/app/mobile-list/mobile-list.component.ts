@@ -21,7 +21,7 @@ export class MobileListComponent implements OnInit {
   }
 
   SortPopularity(){
-    this.mobileList.sort((m1,m2)=> m1.customerRating < m2.customerRating ? -1: m1.customerRating > m2.customerRating ? 1:0) ;
+    this.mobileList.sort((m1,m2)=> m1.customerRating > m2.customerRating ? -1: m1.customerRating < m2.customerRating ? 1:0) ;
   }
 
   SortPriceHighToLow(){
